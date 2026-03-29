@@ -4,7 +4,7 @@
 >
 > **Status**: Planning phase
 > **Created**: 2026-03-28
-> **Last updated**: 2026-03-28
+> **Last updated**: 2026-03-29
 
 ---
 
@@ -56,15 +56,22 @@
 
 ### Directory Structure
 
+This is a **meta-repo** (`devable-master`). App repositories live under `apps/` and are git-ignored — each has its own repo and git history. Run `./setup.sh` to clone or update them. The `apps.json` file is the registry of app repos.
+
 ```
-devable/
+devable-master/
 ├── .claude/
-│   └── claude-plans/
-│       └── 2026-03-28-20-30-devable-grand-plan.md   # this file
+│   ├── claude-plans/
+│   │   └── 2026-03-28-20-30-devable-grand-plan.md   # this file
+│   └── settings.json
 ├── CLAUDE.md
-├── devable-backend/          # Platform API
-├── devable-frontend/         # Platform UI
-├── user-projects/            # All user project files
+├── README.md
+├── apps.json                 # Registry of app repos (used by setup.sh)
+├── setup.sh                  # Clone/update script for app repos
+├── apps/                     # App repos (git-ignored, each has own repo)
+│   ├── devable-backend/      # Platform API (Bun + Elysia + Prisma)
+│   └── devable-frontend/     # Platform UI (Next.js)
+├── user-projects/            # All user project files (to be created)
 │   └── {userId}/
 │       └── {projectId}/
 │           ├── docker-compose.yml
@@ -73,22 +80,22 @@ devable/
 │           ├── CLAUDE.md           # Agent instructions (auto-generated + user custom)
 │           ├── src/
 │           └── .docker/            # DB data volumes
-├── templates/                # Starter templates
+├── templates/                # Starter templates (to be created)
 │   ├── nextjs-ts/
 │   ├── bun-elysia-api/
 │   └── fullstack/
-├── design-themes/            # Design token sets
+├── design-themes/            # Design token sets (to be created)
 │   ├── clean/
 │   ├── bold/
 │   └── soft/
-└── caddy/                    # Caddy reverse proxy config
+└── caddy/                    # Caddy reverse proxy config (to be created)
     ├── docker-compose.yml
     └── Caddyfile
 ```
 
 ---
 
-## 2. Phase 1: Foundation & Infrastructure
+## 2. Phase 1: Foundation & Infrastructure ✅ COMPLETED
 
 Core platform infrastructure that everything else depends on.
 
@@ -137,6 +144,8 @@ Core platform infrastructure that everything else depends on.
 
 ## 3. Phase 2: Project Templates & Design System
 
+> **Note**: Phase 1 uses hardcoded template strings in `ProjectFileService.templates.ts`. Phase 2 should replace this with a proper templating approach: define template files on disk that can be copied and have variables substituted (e.g. using a templating library like Handlebars or EJS, or a simple find-and-replace over template files).
+
 ### 2.1 Next.js + TypeScript template
 - [ ] Dockerfile (Node.js, hot reload in dev)
 - [ ] docker-compose.yml (app + optional postgres)
@@ -184,6 +193,7 @@ Core platform infrastructure that everything else depends on.
 The chat-driven development experience.
 
 ### 3.1 Claude Code CLI integration
+- [ ] Create `ChatSessionRepository` and wire into DB facade (table created in Phase 1 but repository deferred to here)
 - [ ] Service: spawn Claude Code CLI process per session
   - Working directory: project's `user-projects/{userId}/{projectId}/`
   - Flags: `-p`, `--output-format stream-json`, `--verbose`, `--allowedTools`
@@ -348,6 +358,7 @@ The main editor view at `/project/[id]/editor`.
 > These are NOT in scope for the POC but should be considered for production deployment.
 
 ### Infrastructure
+- **Multiple public URLs per project**: A project may contain several services that each need a public URL (e.g. webapp, API, admin panel). The reverse proxy and data model should support mapping multiple containers to distinct subdomains (e.g. `my-app.localhost:8080`, `my-app-api.localhost:8080`, `my-app-admin.localhost:8080`). For the POC we only route the main app container; this should be generalized later.
 - **Reverse proxy**: Replace Caddy with **Traefik** for auto-discovery of Docker containers via labels, better scaling, built-in dashboard, Let's Encrypt integration
 - **Container orchestration**: Move from Docker Compose to **Kubernetes** or **Docker Swarm** for multi-node scaling
 - **Project isolation**: Run each project in its own **Docker-in-Docker** or **sandboxed VM** (e.g., Firecracker) for proper security isolation between users
@@ -394,7 +405,7 @@ The main editor view at `/project/[id]/editor`.
 | 2026-03-28 | User picks template optionally | Flexibility: guided or AI-decided |
 | 2026-03-28 | Clerk for auth, no collaboration features | Already set up, sufficient for POC |
 | 2026-03-28 | .env files for secrets | Simple for POC, upgrade to vault for production |
-| 2026-03-28 | Project files in devable/user-projects/ | Keep everything together for POC development |
+| 2026-03-28 | Project files in devable-master/user-projects/ (git-ignored) | Keep everything together for POC development |
 | 2026-03-28 | *.localhost:8080 for preview URLs | Works natively on macOS, no DNS setup |
 | 2026-03-28 | Claude Code runs on host | Simpler than containerizing, uses Max subscription auth |
 | 2026-03-28 | PostgreSQL preferred, MongoDB for NoSQL | Proven stack, Prisma for PostgreSQL, native driver for Mongo |

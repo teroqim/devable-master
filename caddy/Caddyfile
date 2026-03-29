@@ -1,0 +1,7 @@
+{
+	admin :2019
+}
+
+:8888 {
+	respond "Devable: no project found at this address" 404
+}
