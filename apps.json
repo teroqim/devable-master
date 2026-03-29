@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "name": "devable-backend",
+      "repo": "git@github.com:teroqim/devable-backend.git",
+      "defaultBranch": "main"
+    },
+    {
+      "name": "devable-frontend",
+      "repo": "git@github.com:teroqim/devable-frontend.git",
+      "defaultBranch": "main"
+    }
+  ]
+}
