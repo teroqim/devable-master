@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Purpose: Clone or update all app repositories listed in apps.json.
+# When to run: After first cloning devable-master, or to pull the latest from all app repos.
+# Requires: jq (brew install jq)
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-APPS_DIR="$SCRIPT_DIR/apps"
-CONFIG="$SCRIPT_DIR/apps.json"
+ROOT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
+APPS_DIR="$ROOT_DIR/apps"
+CONFIG="$ROOT_DIR/apps.json"
 
 if ! command -v jq &>/dev/null; then
   echo "Error: jq is required but not installed. Install it with: brew install jq"

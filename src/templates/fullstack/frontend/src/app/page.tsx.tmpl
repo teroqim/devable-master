@@ -1,0 +1,13 @@
+import { fetchHealth } from '@/lib/api-client';
+
+export default async function Home() {
+  const health = await fetchHealth();
+
+  return (
+    <main className="main">
+      <h1>{{PROJECT_NAME}}</h1>
+      <p>Frontend is running. Start building!</p>
+      <p>API status: {health?.status ?? 'unreachable'}</p>
+    </main>
+  );
+}

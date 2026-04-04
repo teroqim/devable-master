@@ -7,6 +7,10 @@
 - Once the plan is approved, rename the file to remove the `-unfinished` suffix.
 - This ensures plans are never lost due to rejected file writes or context issues.
 
+## File Deletion
+
+- To remove files that have been committed or checked into git, always use `git rm` instead of `rm`. This ensures the deletion is tracked by git and avoids sandbox permission issues.
+
 ## README Writing
 
 When adapting or creating README files from reference material:

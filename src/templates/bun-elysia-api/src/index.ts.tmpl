@@ -1,0 +1,8 @@
+import { Elysia } from 'elysia';
+import { healthRoutes } from './routes/health';
+
+const app = new Elysia()
+  .use(healthRoutes)
+  .listen(3000);
+
+console.log(`{{PROJECT_NAME}} is running at http://localhost:${app.server?.port}`);

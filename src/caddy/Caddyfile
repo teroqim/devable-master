@@ -1,5 +1,9 @@
 {
 	admin :2019
+	auto_https off
+	servers :8888 {
+		name devable
+	}
 }
 
 :8888 {

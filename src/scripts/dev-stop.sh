@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Purpose: Stop all development infrastructure and user project containers.
+# When to run: At the end of a development session, or to clean up running containers.
+# What it stops: User project containers, Caddy reverse proxy, backend PostgreSQL.
+# Note: Data volumes are preserved — no data is lost between sessions.
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-USER_PROJECTS_DIR="$SCRIPT_DIR/user-projects"
+ROOT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
+USER_PROJECTS_DIR="$ROOT_DIR/user-projects"
 
 echo "Stopping Devable development environment..."
 echo ""
@@ -21,12 +27,12 @@ fi
 
 # Stop Caddy reverse proxy
 echo "[caddy] Stopping reverse proxy..."
-docker compose -f "$SCRIPT_DIR/caddy/docker-compose.yml" down
+docker compose -f "$ROOT_DIR/src/caddy/docker-compose.yml" down
 echo ""
 
 # Stop backend PostgreSQL
 echo "[backend-db] Stopping PostgreSQL..."
-docker compose -f "$SCRIPT_DIR/apps/devable-backend/docker-compose.yml" down
+docker compose -f "$ROOT_DIR/apps/devable-backend/docker-compose.yml" down
 echo ""
 
 echo "All containers stopped. Data volumes are preserved."

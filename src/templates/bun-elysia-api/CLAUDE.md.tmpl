@@ -1,0 +1,31 @@
+# {{PROJECT_NAME}}
+
+## Overview
+
+A TypeScript API built with Bun, Elysia, and Prisma.
+
+## Development
+
+- Dev server runs on port 3000 inside the container
+- Install dependencies with `bun install`
+- Use TypeScript for all new files
+- Place routes in `src/routes/`
+- Place business logic in `src/services/`
+- Place database repositories in `src/db/`
+- Use Prisma for database access
+
+## Commands
+
+```bash
+bun run dev          # Start dev server with hot reload
+bun run lint         # Run ESLint
+bun run type-check   # TypeScript check
+bunx prisma migrate dev  # Create a migration
+bunx prisma generate     # Regenerate Prisma client
+```
+
+## Database
+
+- PostgreSQL is available at `postgres:5432` inside Docker
+- Connection string is in `DATABASE_URL` env var
+- Schema is in `prisma/schema.prisma`

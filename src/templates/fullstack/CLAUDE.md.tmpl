@@ -1,0 +1,50 @@
+# {{PROJECT_NAME}}
+
+## Overview
+
+A full-stack application with a Next.js frontend, Elysia API backend, and PostgreSQL database.
+
+## Project Structure
+
+```
+├── frontend/     # Next.js web app (port 3000)
+├── backend/      # Elysia API (port 3001)
+├── shared/       # Shared TypeScript types
+└── docker-compose.yml
+```
+
+## Development
+
+- Frontend dev server runs on port 3000 inside its container
+- Backend API runs on port 3001 inside its container
+- PostgreSQL is available at `postgres:5432` inside Docker
+- Use TypeScript for all new files
+
+### Frontend
+
+- Place components in `frontend/src/components/`
+- Place utilities in `frontend/src/lib/`
+- API calls go through `frontend/src/lib/api-client.ts`
+
+### Backend
+
+- Place routes in `backend/src/routes/`
+- Place business logic in `backend/src/services/`
+- Use Prisma for database access
+
+## Commands
+
+### Frontend
+
+```bash
+cd frontend && npm run dev     # Start dev server
+cd frontend && npm run lint    # Run ESLint
+```
+
+### Backend
+
+```bash
+cd backend && bun run dev      # Start dev server
+cd backend && bun run lint     # Run ESLint
+cd backend && bunx prisma migrate dev  # Create a migration
+```

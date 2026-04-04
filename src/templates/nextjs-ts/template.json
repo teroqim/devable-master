@@ -1,0 +1,27 @@
+{
+  "name": "Next.js + TypeScript",
+  "description": "A modern React web app with Next.js 16, TypeScript, and hot reload.",
+  "runtime": "node",
+  "needsDatabase": false,
+  "hasFrontend": true,
+  "internalPort": 3000,
+  "directories": [
+    "src/app",
+    "src/components",
+    "src/lib"
+  ],
+  "files": [
+    { "source": "Dockerfile.tmpl", "destination": "Dockerfile", "template": true },
+    { "source": "docker-compose.yml.tmpl", "destination": "docker-compose.yml", "template": true },
+    { "source": "package.json.tmpl", "destination": "package.json", "template": true },
+    { "source": "tsconfig.json", "destination": "tsconfig.json", "template": false },
+    { "source": "eslint.config.mjs", "destination": "eslint.config.mjs", "template": false },
+    { "source": ".prettierrc.json", "destination": ".prettierrc.json", "template": false },
+    { "source": "next.config.ts", "destination": "next.config.ts", "template": false },
+    { "source": "src/app/layout.tsx.tmpl", "destination": "src/app/layout.tsx", "template": true },
+    { "source": "src/app/page.tsx.tmpl", "destination": "src/app/page.tsx", "template": true },
+    { "source": "src/app/globals.css", "destination": "src/app/globals.css", "template": false },
+    { "source": "CLAUDE.md.tmpl", "destination": "CLAUDE.md", "template": true },
+    { "source": ".env.tmpl", "destination": ".env", "template": true }
+  ]
+}

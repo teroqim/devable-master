@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    ports:
+      - "{{APP_PORT}}:3000"
+    volumes:
+      - ./src:/app/src
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped

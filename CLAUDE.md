@@ -5,11 +5,15 @@ Where you can create apps by chatting with the AI, which will manage resources, 
 
 ## Overall structure
 
-This is a meta-repo (`devable-master`). App repositories live under `apps/` and are git-ignored — each has its own repo and git history. Run `./setup.sh` to clone or update them.
+This is a meta-repo (`devable-master`). App repositories live under `apps/` and are git-ignored — each has its own repo and git history. Run `./src/scripts/setup.sh` to clone or update them.
 
 - `apps/devable-backend` — Backend API
 - `apps/devable-frontend` — Frontend app
-- `apps.json` — Registry of app repos (used by `setup.sh`)
+- `apps.json` — Registry of app repos (used by `src/scripts/setup.sh`)
+- `src/scripts/` — Dev lifecycle scripts (setup, start, stop)
+- `src/caddy/` — Caddy reverse proxy config
+- `src/templates/` — Project scaffold templates
+- `src/design-themes/` — CSS design theme files
 
 You will work across all apps in `apps/` to create features that span multiple repos.
 

@@ -29,6 +29,8 @@ Use result objects (`{ success: true, ... } | { success: false, error }`) for se
 
 Never use silent catch blocks (empty `catch {}` or `catch` that does nothing). Always at minimum log the error, and prefer returning an error response or re-throwing. A catch block should make it clear what went wrong and why it was handled there.
 
+Do not create fire-and-forget helper functions that wrap DB calls or other throwable operations and silently handle errors. Keep try-catch blocks visible at the call site so error handling is explicit and reviewable. If you think a fire-and-forget pattern is genuinely needed, check with the user first.
+
 ## Loops
 
 Do not use `for...of` loops. Use `forEach` or a regular `for` loop instead.

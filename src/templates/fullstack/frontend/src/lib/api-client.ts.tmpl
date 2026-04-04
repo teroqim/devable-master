@@ -1,0 +1,11 @@
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001';
+
+export async function fetchHealth(): Promise<{ status: string } | null> {
+  try {
+    const response = await fetch(`${API_URL}/ping`);
+    if (!response.ok) return null;
+    return response.json();
+  } catch {
+    return null;
+  }
+}

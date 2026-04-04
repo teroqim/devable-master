@@ -1,0 +1,29 @@
+{
+  "name": "Bun + Elysia API",
+  "description": "A fast TypeScript API with Bun, Elysia, Prisma, and PostgreSQL.",
+  "runtime": "bun",
+  "needsDatabase": true,
+  "hasFrontend": false,
+  "internalPort": 3000,
+  "directories": [
+    "src/routes",
+    "src/services",
+    "src/db",
+    "src/lib",
+    "prisma",
+    ".docker"
+  ],
+  "files": [
+    { "source": "Dockerfile.tmpl", "destination": "Dockerfile", "template": true },
+    { "source": "docker-compose.yml.tmpl", "destination": "docker-compose.yml", "template": true },
+    { "source": "package.json.tmpl", "destination": "package.json", "template": true },
+    { "source": "tsconfig.json", "destination": "tsconfig.json", "template": false },
+    { "source": "eslint.config.mjs", "destination": "eslint.config.mjs", "template": false },
+    { "source": ".prettierrc.json", "destination": ".prettierrc.json", "template": false },
+    { "source": "src/index.ts.tmpl", "destination": "src/index.ts", "template": true },
+    { "source": "src/routes/health.ts", "destination": "src/routes/health.ts", "template": false },
+    { "source": "prisma/schema.prisma.tmpl", "destination": "prisma/schema.prisma", "template": true },
+    { "source": "CLAUDE.md.tmpl", "destination": "CLAUDE.md", "template": true },
+    { "source": ".env.tmpl", "destination": ".env", "template": true }
+  ]
+}

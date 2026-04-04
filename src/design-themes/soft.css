@@ -1,0 +1,155 @@
+/* Soft Theme — pastels, rounded, gentle gradients */
+
+:root {
+  --color-background: #fefefe;
+  --color-foreground: #334155;
+  --color-primary: #8b5cf6;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f5f3ff;
+  --color-secondary-foreground: #334155;
+  --color-muted: #faf5ff;
+  --color-muted-foreground: #94a3b8;
+  --color-accent: #fce7f3;
+  --color-accent-foreground: #9d174d;
+  --color-destructive: #f472b6;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #e2e8f0;
+  --color-input: #e2e8f0;
+  --color-ring: #8b5cf6;
+
+  --font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 3px 0 rgb(148 163 184 / 0.1);
+  --shadow: 0 2px 8px 0 rgb(148 163 184 / 0.15);
+  --shadow-lg: 0 8px 24px 0 rgb(148 163 184 / 0.2);
+
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+
+  --transition-fast: 200ms ease;
+  --transition: 300ms ease;
+}
+
+.dark {
+  --color-background: #0f172a;
+  --color-foreground: #e2e8f0;
+  --color-primary: #a78bfa;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #1e1b4b;
+  --color-secondary-foreground: #e2e8f0;
+  --color-muted: #1e293b;
+  --color-muted-foreground: #94a3b8;
+  --color-accent: #3b0764;
+  --color-accent-foreground: #f0abfc;
+  --color-destructive: #ec4899;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #1e293b;
+  --color-input: #1e293b;
+  --color-ring: #a78bfa;
+
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.3);
+  --shadow: 0 2px 8px 0 rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 8px 24px 0 rgb(0 0 0 / 0.4);
+}
+
+/* Base reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  background: var(--color-background);
+  color: var(--color-foreground);
+  line-height: 1.7;
+}
+
+/* Base component styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-6);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+.btn-secondary {
+  background: var(--color-secondary);
+  color: var(--color-secondary-foreground);
+  border-color: var(--color-border);
+}
+
+.btn-destructive {
+  background: var(--color-destructive);
+  color: var(--color-destructive-foreground);
+}
+
+.input {
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--color-input);
+  border-radius: var(--radius);
+  background: var(--color-background);
+  color: var(--color-foreground);
+  transition: border-color var(--transition-fast);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-ring);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-ring) 15%, transparent);
+}
+
+.card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: var(--spacing-4);
+}

@@ -142,9 +142,16 @@ Core platform infrastructure that everything else depends on.
 
 ---
 
-## 3. Phase 2: Project Templates & Design System
+## 3. Phase 2: Project Templates & Design System ✅ COMPLETED
 
-> **Note**: Phase 1 uses hardcoded template strings in `ProjectFileService.templates.ts`. Phase 2 should replace this with a proper templating approach: define template files on disk that can be copied and have variables substituted (e.g. using a templating library like Handlebars or EJS, or a simple find-and-replace over template files).
+> **Deviations from plan:**
+>
+> - The Next.js template has no database at all (not optional) -- if the AI agent later needs a DB, it modifies the project's docker-compose.yml itself.
+> - The fullstack template uses a flat layout (`frontend/` + `backend/` dirs sharing a root docker-compose.yml) instead of a monorepo with workspaces.
+> - The full create/delete orchestration (Docker start/stop, Caddy routing, port allocation, file scaffolding) was left as TODOs in Phase 1 and was wired in this phase.
+> - Scripts, Caddy config, templates, and design themes were reorganized into a `src/` folder in devable-master.
+> - Caddy was fixed: server explicitly named `devable`, `auto_https off` added for `.localhost` domains.
+> - Port allocation was enhanced with `excludePorts` parameter to prevent collisions when allocating multiple ports in the same flow.
 
 ### 2.1 Next.js + TypeScript template
 - [ ] Dockerfile (Node.js, hot reload in dev)
