@@ -19,6 +19,7 @@
   ],
   "files": [
     { "source": "docker-compose.yml.tmpl", "destination": "docker-compose.yml", "template": true },
+    { "source": "Dockerfile.workspace.tmpl", "destination": "Dockerfile.workspace", "template": false },
     { "source": "frontend/Dockerfile.tmpl", "destination": "frontend/Dockerfile", "template": true },
     { "source": "frontend/package.json.tmpl", "destination": "frontend/package.json", "template": true },
     { "source": "frontend/tsconfig.json", "destination": "frontend/tsconfig.json", "template": false },
