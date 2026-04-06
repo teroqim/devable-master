@@ -27,6 +27,7 @@ You will work across all apps in `apps/` to create features that span multiple r
 - If you need clarification, ask one extra question rather than making assumptions.
 - Always ask whether to install new dependecies. Always question yourself if you really need it or if there are other alternative dependencies that are more suited. Only install dependecies in the project folder unless asked otherwise. Always ask the user if you are unsure about which project to install the dependency in.
 - Always lint and typecheck your code.
+- After writing code, always review it against the project rules (`.claude/rules/`) before presenting it. Check for: correct Async naming, focused try-catch, types in types files, no `for...of`, proper error handling around throwable operations, and all other applicable rules.
 - Use LSP plugins to help with searching and navigating your code.
 - Come with suggestions about how to improve overall architecture.
 - When the user gives feedback you should see if you can extract rules from the feedback that you can put into a suitable file under .claude/rules so that you can follow those rules in the future and also so that you can use those rules to improve your performance in the future. Always ask if the user wants to save the extracted rules.

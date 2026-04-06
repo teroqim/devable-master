@@ -22,3 +22,11 @@ services:
       - ./.docker/pgdata:/var/lib/postgresql/data
     ports:
       - "{{DB_PORT}}:5432"
+
+  workspace:
+    build:
+      context: .
+      dockerfile: Dockerfile.workspace
+    volumes:
+      - .:/workspace
+    restart: unless-stopped

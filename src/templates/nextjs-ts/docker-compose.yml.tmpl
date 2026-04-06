@@ -8,3 +8,11 @@ services:
     environment:
       - NODE_ENV=development
     restart: unless-stopped
+
+  workspace:
+    build:
+      context: .
+      dockerfile: Dockerfile.workspace
+    volumes:
+      - .:/workspace
+    restart: unless-stopped
