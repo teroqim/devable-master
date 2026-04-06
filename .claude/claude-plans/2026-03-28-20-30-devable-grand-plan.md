@@ -195,7 +195,11 @@ Core platform infrastructure that everything else depends on.
 
 ---
 
-## 4. Phase 3: AI Agent Integration
+## 4. Phase 3: AI Agent Integration ✅
+
+> **Completed 2026-04-06** — Detailed plan: `2026-04-04-phase-3-ai-agent-integration.md`
+>
+> The implementation deviated significantly from the items listed below. The detailed plan was created before implementation and became the authoritative source. Key differences: dual-mode agent (CLI + SDK) via AgentAdapter interface, container sandbox MCP server for all agent operations instead of direct host access, SSE instead of WebSocket, direct backend API calls instead of Next.js proxy. Sections 3.4 (screenshots) and 3.5 (user API key) were deferred to future phases. See the detailed plan for the full list of deviations discovered during implementation.
 
 The chat-driven development experience.
 

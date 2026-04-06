@@ -1,8 +1,22 @@
 # Phase 3: AI Agent Integration -- Detailed Plan
 
-> **Status**: Approved
+> **Status**: Completed
 > **Created**: 2026-04-04
+> **Completed**: 2026-04-06
 > **Parent plan**: `2026-03-28-20-30-devable-grand-plan.md`
+>
+> ### Deviations discovered during implementation
+>
+> The following deviations from the plan were discovered and resolved during development:
+>
+> - **CLI flags**: `stream-json` output requires `--verbose` (not `--include-partial-messages` as planned). `--session-id` and `--resume` are mutually exclusive; implementation uses `--session-id` for first message and `--resume` for subsequent messages.
+> - **Docker exec**: `-T` flag only exists on `docker compose exec`, not `docker exec`. Removed from the MCP server.
+> - **Elysia SSE**: Elysia auto-wraps generator yields in `data: ...\n\n` format, so route handlers yield raw JSON (not `data: JSON\n\n` as planned).
+> - **SSE keepalive**: Added keepalive pings every 15 seconds to prevent HTTP connection drops during long agent operations (30-120s). Not in original plan.
+> - **CLI output format**: The CLI with `--verbose` sends complete `assistant` messages, not incremental `content_block_delta` events. The `CliAgentAdapter` was adapted to parse `assistant` (text + tool_use) and `user` (tool_result) message types.
+> - **Container ID**: Workspace containers use project UUID as the compose project name, not slug. Fallback is `${project.id}-workspace-1`.
+> - **Frontend API pattern**: Chat API client uses `{ success, data, statusCode }` result objects instead of the existing `ApiError` throw pattern.
+> - **Frontend component tests**: Tests for new UI components were deferred to focus on getting the end-to-end flow working. Existing tests (31 frontend, 100 backend) all pass.
 
 ---
 
