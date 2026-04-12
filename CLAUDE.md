@@ -22,6 +22,7 @@ You will work across all apps in `apps/` to create features that span multiple r
 - Follow claude-.md in each of the project and make sure you follow those instructions when coding in each repo and follow whatever settings are in each project's .claude folder.
 - Always create plans before coding. Name the plan-files in the format YYYY-MM-DD-hh-mm-feature-name.md and put them in the .claude/plans folder.
 - Always create tests before coding.
+- After writing tests, review them against the implementation to verify you are covering all important cases: boundary conditions, error paths, edge cases (empty inputs, non-existent paths, permission errors), and each distinct code branch. Do not just test the happy path.
 - Always try to verify that your changes work by running the code and checking the results.
 - Always follow good coding practices and clean up after yourself. Leaving deprecated code is strictly forbidden.
 - If you need clarification, ask one extra question rather than making assumptions.
