@@ -248,7 +248,21 @@ The chat-driven development experience.
 
 ---
 
-## 5. Phase 4: IDE Experience
+## 5. Phase 4: IDE Experience ✅
+
+> **Completed 2026-04-12** — Detailed plan: `2026-04-11-10-15-phase-4-ide-experience.md`
+>
+> **Deviations from plan:**
+>
+> - Layout is 2-pane (chat + tabbed main area) instead of 3-pane. Tab bar switches between Code, Preview, Logs, Split views.
+> - File tree shows all files (no exclusions), with lazy loading for directories with >50 items.
+> - Context menu (right-click) implemented for file CRUD instead of inline action buttons.
+> - Start/stop/restart routes now update project status in DB (was missing from Phase 1).
+> - Chat content blocks model implemented for chronological ordering of text and tool uses.
+> - Elapsed timer shows per-message in the footer (not in header as originally planned).
+> - Logs API split into `/logs` (JSON) and `/logs/stream` (SSE) due to Elysia generator wrapping.
+> - Rebuild status polling not implemented — requires manual page reload to see final status.
+> - Frontend component tests deferred — backend has 168 unit tests, frontend was integration-tested manually.
 
 The main editor view at `/project/[id]/editor`.
 

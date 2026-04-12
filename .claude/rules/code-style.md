@@ -51,6 +51,29 @@ async function createSession(data: SessionData): Promise<Session> { ... }
 
 This makes it immediately clear at the call site that the function is asynchronous and returns a promise.
 
+## Control Flow
+
+Always use curly braces for `if`, `else`, `for`, and `while` bodies, even for single-line statements:
+
+```typescript
+// DO
+if (depth !== undefined) {
+  params.set('depth', String(depth));
+}
+
+// DON'T
+if (depth !== undefined) params.set('depth', String(depth));
+```
+
 ## Loops
 
 Do not use `for...of` loops. Use `forEach` or a regular `for` loop instead.
+
+## Test File Organization
+
+In test directories, separate constants from utility functions:
+
+- **`constants.ts`**: Mock data, IDs, config objects — things that are plain values.
+- **`utils.ts`**: Factory functions (`getMockDb()`, `createTestProjectAsync()`) — anything with logic or side effects.
+
+Do not put functions in `constants.ts`.
